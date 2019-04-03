@@ -24,3 +24,8 @@
 6. JS 中的 React 代码接管页面操作
 
 ### 异步数据服务端渲染
+由于初始store是没有数据的需要通过ajax获取，借助`react-router-config`库可以匹配到相应的路由跟需要渲染的子路由，这时候需要借助路由功能定义loadData字段，并且在相应页面文件中定义组件的静态函数loadData，之后调用loadData方法获取到渲染所需要的所有数据后添加到store中再一起返回给浏览器端
+
+### store数据注水与脱水
+注水：服务端异步获取到数据后将store数据通过`window.context = { state: ${JSON.stringify(store)} }`注入到页面中
+脱水：浏览器初次加载页面后先从window中同步服务端获取到的store数据，并且在页面中获取数据的代码前加一层判断是否有值再决定获取
