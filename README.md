@@ -29,3 +29,9 @@
 ### store数据注水与脱水
 注水：服务端异步获取到数据后将store数据通过`window.context = { state: ${JSON.stringify(store)} }`注入到页面中
 脱水：浏览器初次加载页面后先从window中同步服务端获取到的store数据，并且在页面中获取数据的代码前加一层判断是否有值再决定获取
+
+### 使用client -> node 中间层 -> api server架构
+1. 将client层请求的api都用node中间层做转发，可以使用express-http-proxy代理转发到api server层
+2. 区分开server端使用的axios与client端使用的axios配置
+3. 使用redux-thunk中的withExtraArgument将serverAxios与clientAxios分别传入对应的createStore方法中
+4. 到具体的action中可以通过第三个参数获取到具体的axios实例，此时已经区分开了server端请求与client端的请求
