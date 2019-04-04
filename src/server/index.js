@@ -1,4 +1,5 @@
 import express from 'express';
+import proxy from 'express-http-proxy';
 import { render } from './utils.js';
 import { matchRoutes } from 'react-router-config';
 import routes from '../routes';
@@ -6,6 +7,12 @@ import { getStore } from '../store';
 
 const app = new express();
 app.use(express.static('public'));
+
+app.use('/v2', proxy('http://newsapi.org', {
+    proxyReqPathResolver: (req) => {
+        return `/v2${req.url}`;
+    }
+}));
 
 app.get('*', (req, res) => {
     const store = getStore();

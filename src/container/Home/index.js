@@ -9,7 +9,9 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getHomeList();
+        if (!this.props.newsList.length) {
+            this.props.getHomeList();
+        }
     }
 
     getList() {
