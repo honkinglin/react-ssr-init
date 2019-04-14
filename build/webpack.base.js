@@ -1,6 +1,13 @@
+const path = require('path');
+
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
     entry: './src/client/index.js',
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, '../src'),
+        }
+    },
     module: {
         rules: [
             {
@@ -14,7 +21,7 @@ module.exports = {
                         }
                     }]]
                 }
-            }
+            },
         ]
     }
 }

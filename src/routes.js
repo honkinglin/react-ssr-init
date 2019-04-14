@@ -1,6 +1,7 @@
 import App from './app';
 import Home from './container/Home';
 import Login from './container/Login';
+import NotFound from './container/NotFound';
 
 export default [
     {
@@ -21,6 +22,9 @@ export default [
                 exact: true,
                 key: 'Login',
             },
+            {
+                component: NotFound,
+            }
         ]
     },
 ];

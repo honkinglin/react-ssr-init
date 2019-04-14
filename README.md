@@ -35,3 +35,16 @@
 2. 区分开server端使用的axios与client端使用的axios配置
 3. 使用redux-thunk中的withExtraArgument将serverAxios与clientAxios分别传入对应的createStore方法中
 4. 到具体的action中可以通过第三个参数获取到具体的axios实例，此时已经区分开了server端请求与client端的请求
+
+## server端渲染加载数据接口异常情况处理
+server端渲染加载数据时候需要对加载数据的axios函数额外封装一层`promise`，使其永远会被`resolve`从而不影响之后的`Promise.all(promises).then`，保证了页面的渲染不受接口影响。
+
+## 服务器端css样式处理
+server端配置`style-loader`时候会警告`window`变量不存在问题，此时可以借助`isomorphic-style-loader`来处理
+
+需要手动将打包生成的样式数据添加至`<style>`标签内,与store数据注水流程类似
+
+## 服务器端设置cookie、状态码
+客户端渲染时接口请求会带上cookie，而server端向api server请求时则需要手动将cookie带上
+
+涉及到404 301重定向相关的逻辑，需要server端手动判断并处理

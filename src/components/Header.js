@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './style.css';
+import withStyle from '@/withStyle';
 
-const Header = () => {
-    return (
-        <div>
-            <Link to='/'>Home</Link>
-            <br />
-            <Link to='/login'>Login</Link>
-        </div>
-    )
+class Header extends React.Component {
+    render() {
+        return (
+            <div className={styles.container}>
+                <Link to='/' className={styles.item}>Home</Link>
+                <Link to='/login' className={styles.item}>Login</Link>
+            </div>
+        )
+    }
 }
 
-export default Header;
+export default withStyle(Header, styles);

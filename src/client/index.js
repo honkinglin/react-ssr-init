@@ -20,4 +20,4 @@ const App = () => {
     )
 }
 
-ReactDOM.hydrate(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

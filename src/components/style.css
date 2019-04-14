@@ -1,0 +1,17 @@
+.container {
+    border: 1px solid #999;    
+}
+
+.item {
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.item:hover {
+    color: #999;
+}

@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-const instance = axios.create({
+const createInstance = (req) => axios.create({
     baseURL: 'https://newsapi.org',
+    headers: {
+        cookie: req.get('cookie') || '',
+    },
+    params: {
+        apiKey: 'fa35a325ddfa4c4798102ebb76809bbb',
+    },
 });
 
-export default instance;
+export default createInstance;

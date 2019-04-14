@@ -9,11 +9,11 @@ const reducer = combineReducers({
 });
 
 // 当服务端获取ajax请求时候需要直接获取真实api地址，客户端渲染时候使用proxy地址
-export function getStore() {
-    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios)));
+export function getStore(req) {
+    return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios(req))));
 };
 
 export function getClientStore() {
-    const defaultState = window.isSecureContext.state;
+    const defaultState = window.context.state;
     return createStore(reducer, defaultState, applyMiddleware(thunk.withExtraArgument(clientAxios)));
-}
+};
