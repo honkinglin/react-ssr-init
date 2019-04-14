@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 export const render = (store, routes, req, context) => {
     const content = renderToString((
@@ -17,10 +18,14 @@ export const render = (store, routes, req, context) => {
 
     const cssStr = context.css.join('\n');
 
+    const helmet = Helmet.renderStatic();
+
     return `
-        <html>
+        <html ${helmet.htmlAttributes.toString()}>
             <head>
-                <title>ssr</title>
+                ${helmet.title.toString()}
+                ${helmet.meta.toString()}
+                ${helmet.link.toString()}
                 <style>${cssStr}</style>
             </head>
             <body>

@@ -22,6 +22,16 @@ module.exports = {
                     }]]
                 }
             },
+            {
+                test: /\.(jpe?g|png|gif|webp)$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 8000,
+                    outputPath: 'image',
+                    useRelativePath: false,
+                    name: '[name].[ext]?[hash]',
+                }
+            },
         ]
     }
 }

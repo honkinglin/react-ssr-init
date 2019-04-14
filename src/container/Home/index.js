@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { getHomeList } from './store/actions';
 import styles from './style.css';
 import withStyle from '@/withStyle';
@@ -30,10 +31,16 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
-                <p className={styles.item}>this is {this.props.name}!!!!</p>
-                { this.getList() }
-            </div>
+            <React.Fragment>
+                <Helmet>
+                    <title>hello</title>
+                    <meta name="description" content="lalalala" />
+                </Helmet>
+                <div>
+                    <p className={styles.item}>this is {this.props.name}!!!!</p>
+                    { this.getList() }
+                </div>
+            </React.Fragment>
         );
     }
 }

@@ -48,3 +48,6 @@ server端配置`style-loader`时候会警告`window`变量不存在问题，此�
 客户端渲染时接口请求会带上cookie，而server端向api server请求时则需要手动将cookie带上
 
 涉及到404 301重定向相关的逻辑，需要server端手动判断并处理
+
+## SEO 优化
+使用`react-helmet`对各个页面的`title` `meta` `link`进行管理
